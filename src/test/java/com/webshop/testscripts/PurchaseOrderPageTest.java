@@ -10,7 +10,7 @@ import com.webshop.pages.PurchaseOrderPage;
 
 public class PurchaseOrderPageTest extends SetTestEnvironment{
 
-	@Test(priority=1, dependsOnMethods = {"loginPageTest.verifyApplicationLoginTest"} )
+	@Test(priority=1, dependsOnGroups = {"LoginPageTest.verifyApplicationLoginTest"})
 	public void verifyShoppingCart(){
 
 		PurchaseOrderPage purchaseOrderPage = new PurchaseOrderPage(driver);		
@@ -29,7 +29,7 @@ public class PurchaseOrderPageTest extends SetTestEnvironment{
 		LOGGER.info("Shopping cart verification test completed successfully.");
 	}
 	
-	@Test(priority=2, dependsOnMethods = {"verifyShoppingCart"})
+	@Test(priority=2, dependsOnGroups = {"LoginPageTest.verifyApplicationLoginTest"})
 	public void verifyPurchaseOrder(){
 
 		PurchaseOrderPage purchaseOrderPage = new PurchaseOrderPage(driver);

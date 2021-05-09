@@ -12,7 +12,7 @@ import com.webshop.util.ObjectReader;
 
 public class LoginPageTest extends SetTestEnvironment{
 
-	@Test(priority=1)
+	@Test(priority=1, groups={"LoginPageTest.verifyApplicationLoginTest"})
 	public void verifyApplicationLoginTest() {
 
 		LoginPage loginPage = new LoginPage(driver);
