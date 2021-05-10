@@ -21,7 +21,7 @@ public class CheckoutOrderPage extends CommonMethod{
 		// TODO Auto-generated constructor stub
 		
 		super(driver);
-		checkoutOrderPropertiesReader = new ObjectReader(PageConstant.DAHBOARD_PROPERTIES_FILE_PATH);
+		checkoutOrderPropertiesReader = new ObjectReader(PageConstant.CHECKOUT_ORDER_PROPERTIES_FILE_PATH);
 	}
 
 	/* Methos used to verify element is present on page

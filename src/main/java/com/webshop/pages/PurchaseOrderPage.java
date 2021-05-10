@@ -22,7 +22,7 @@ public class PurchaseOrderPage extends CommonMethod{
 		// TODO Auto-generated constructor stub
 		
 		super(driver);
-		purchaseOrderPropertiesReader = new ObjectReader(PageConstant.DAHBOARD_PROPERTIES_FILE_PATH);
+		purchaseOrderPropertiesReader = new ObjectReader(PageConstant.PURCHASE_ORDER_PROPERTIES_FILE_PATH);
 	}
 
 	/* Methos used to verify element is present on page

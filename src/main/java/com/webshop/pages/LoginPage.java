@@ -10,7 +10,7 @@ import com.webshop.util.ObjectReader;
 public class LoginPage extends CommonMethod{
 	
 	Logger LOGGER = Logger.getLogger(LoginPage.class);
-	private ObjectReader loginPropertiesReader;
+	private static ObjectReader loginPropertiesReader;
 	PageConstant pageConstant = new PageConstant();
 	
 	/* Constructor method used to initalise the web driver and wait method.
@@ -22,8 +22,10 @@ public class LoginPage extends CommonMethod{
 		// TODO Auto-generated constructor stub
 		
 		super(driver);
-		loginPropertiesReader = new ObjectReader(PageConstant.DAHBOARD_PROPERTIES_FILE_PATH);
+		loginPropertiesReader = new ObjectReader(PageConstant.LOGIN_PROPERTIES_FILE_PATH);
+
 	}
+
 
 	/* Methos used to verify element is present on page
 	 * @param - key to retrieve element from properties file
