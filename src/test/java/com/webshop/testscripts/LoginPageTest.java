@@ -5,6 +5,7 @@ import org.testng.asserts.SoftAssert;
 import org.testng.log4testng.Logger;
 
 import com.webshop.basetest.SetTestEnvironment;
+import com.webshop.commonaction.CommonMethod;
 import com.webshop.constant.PageConstant;
 import com.webshop.pages.DashboardPage;
 import com.webshop.pages.LoginPage;
@@ -39,7 +40,7 @@ public class LoginPageTest extends SetTestEnvironment{
 		LOGGER.info("Aplication login test completed successfully.");
 	}
 	
-	@Test(priority=2, dependsOnMethods = {"verifyApplicationLoginTest"})
+	@Test(priority=2)
 	public void verifyLoggedInUserTest(){
 
 		Logger LOGGER = Logger.getLogger(LoginPageTest.class);
@@ -47,6 +48,9 @@ public class LoginPageTest extends SetTestEnvironment{
 		ObjectReader objectReader = new ObjectReader(PageConstant.CONFIG_PROPERTIES_FILE_PATH);
 		DashboardPage dashboardPage = new DashboardPage(driver);
 		LOGGER.info("Test - Validate logged in user test.");
+		
+		CommonMethod commonMethod = new CommonMethod(driver);
+		commonMethod.login();
 		LOGGER.info("Verify elements of dashboard page.");
 		dashboardPage.clickOnElementOnDashboardPage("loggedInUser");
 		

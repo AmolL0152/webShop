@@ -5,17 +5,21 @@ import org.testng.asserts.SoftAssert;
 import org.testng.log4testng.Logger;
 
 import com.webshop.basetest.SetTestEnvironment;
+import com.webshop.commonaction.CommonMethod;
 import com.webshop.constant.PageConstant;
 import com.webshop.pages.CheckoutOrderPage;
 
 public class CheckoutOrderPageTest extends SetTestEnvironment{
 
-	@Test(priority=1, dependsOnGroups = {"LoginPageTest.verifyApplicationLoginTest"})
+	@Test(priority=1)
 	public void verifyShoppingCart(){
 
 		CheckoutOrderPage checkoutOrderPage = new CheckoutOrderPage(driver);
 		Logger LOGGER = Logger.getLogger(PurchaseOrderPageTest.class);
 		SoftAssert softAssert = new SoftAssert();
+
+		CommonMethod commonMethod = new CommonMethod(driver);
+		commonMethod.login();
 		LOGGER.info("Test - Verify Shopping cart.");
 
 		softAssert.assertTrue(checkoutOrderPage.verifyElementPresentOnCheckoutOrderPage("shoppingCart"),"Shopping cart link not present on page.");
@@ -27,14 +31,20 @@ public class CheckoutOrderPageTest extends SetTestEnvironment{
 		LOGGER.info("Shopping cart verification test completed successfully.");
 	}
 	
-	@Test(priority=2, dependsOnGroups = {"LoginPageTest.verifyApplicationLoginTest"})
-	public void verifyAddAddressdetails(){
+	@Test(priority=2)
+	public void verifyAddAddressDetails(){
 
 		CheckoutOrderPage checkoutOrderPage = new CheckoutOrderPage(driver);
 		Logger LOGGER = Logger.getLogger(PurchaseOrderPageTest.class);
 		SoftAssert softAssert = new SoftAssert();
+
+		CommonMethod commonMethod = new CommonMethod(driver);
+		commonMethod.login();
 		LOGGER.info("Test - Verify Add address details to proceed  order checkout.");
 
+		softAssert.assertTrue(checkoutOrderPage.verifyElementPresentOnCheckoutOrderPage("shoppingCart"),"Shopping cart link not present on page.");
+		LOGGER.info("Verify element on shopping cart.");
+		checkoutOrderPage.clickOnElementOfCheckoutOrderPage("shoppingCart");
 		softAssert.assertTrue(checkoutOrderPage.verifyElementPresentOnCheckoutOrderPage("shoppingcartCheckoutBox"),"Order checkout list Book section not available on page.");
 
 		checkoutOrderPage.clickOnElementOfCheckoutOrderPage("shoppingcartCheckoutBox");
@@ -44,8 +54,8 @@ public class CheckoutOrderPageTest extends SetTestEnvironment{
 		checkoutOrderPage.enterTextOnElementOnCheckoutOrderPage(("applyCouponCode"), PageConstant.COUPON_CODE);
 		
 		LOGGER.info("Apply gift coupon code for order checkout.");
-		softAssert.assertTrue(checkoutOrderPage.verifyElementPresentOnCheckoutOrderPage("applyCouponCode"),"Apply gift card not available on checkout page.");
-		checkoutOrderPage.enterTextOnElementOnCheckoutOrderPage(("applyGiftCode"), PageConstant.GIFT_CODE);
+		softAssert.assertTrue(checkoutOrderPage.verifyElementPresentOnCheckoutOrderPage("applyGiftCard"),"Apply gift card not available on checkout page.");
+		checkoutOrderPage.enterTextOnElementOnCheckoutOrderPage(("applyGiftCard"), PageConstant.GIFT_CODE);
 	
 		LOGGER.info("Verify address details.");
 		softAssert.assertTrue(checkoutOrderPage.verifyElementPresentOnCheckoutOrderPage("selectCountry"),"Apply gift card not available on checkout page.");
@@ -56,15 +66,20 @@ public class CheckoutOrderPageTest extends SetTestEnvironment{
 		LOGGER.info("Book purchase test completed successfully.");		
 	}
 	
-	@Test
-	public void verifycheckoutOrderPagetest(){
+	@Test(priority=3)
+	public void verifycheckoutOrderPageTest(){
 
 		CheckoutOrderPage checkoutOrderPage = new CheckoutOrderPage(driver);
 		Logger LOGGER = Logger.getLogger(PurchaseOrderPageTest.class);
 		SoftAssert softAssert = new SoftAssert();
 		LOGGER.info("Test - Verify Order checkout test case.");
 
+		CommonMethod commonMethod = new CommonMethod(driver);
+		commonMethod.login();
 
+		softAssert.assertTrue(checkoutOrderPage.verifyElementPresentOnCheckoutOrderPage("shoppingCart"),"Shopping cart link not present on page.");
+		LOGGER.info("Verify element on shopping cart.");
+		checkoutOrderPage.clickOnElementOfCheckoutOrderPage("shoppingCart");
 		LOGGER.info("Validate terms and condition.");
 		softAssert.assertTrue(checkoutOrderPage.verifyElementPresentOnCheckoutOrderPage("termsAndCondition"),"Order checkout terms and condition not available on page.");
 		checkoutOrderPage.clickOnElementOfCheckoutOrderPage("termsAndCondition");

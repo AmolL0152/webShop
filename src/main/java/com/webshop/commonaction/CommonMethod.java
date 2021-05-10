@@ -6,6 +6,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.asserts.SoftAssert;
+import org.testng.log4testng.Logger;
+
+import com.webshop.constant.PageConstant;
+import com.webshop.pages.LoginPage;
+import com.webshop.testscripts.LoginPageTest;
+import com.webshop.util.ObjectReader;
 
 public class CommonMethod {
 
@@ -110,5 +117,29 @@ public class CommonMethod {
 		js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", element);
 		return element.getText();
 	}
-	
+
+	public void login(){
+		LoginPage loginPage = new LoginPage(driver);
+		ObjectReader objectReader = new ObjectReader(PageConstant.CONFIG_PROPERTIES_FILE_PATH);
+		Logger LOGGER = Logger.getLogger(LoginPageTest.class);
+		SoftAssert softAssert = new SoftAssert();
+		LOGGER.info("Test - Application login.");
+
+		softAssert.assertTrue(loginPage.verifyElementPresentOnLoginPage("signupLink"),"Sign up link not present on log in page.");
+		LOGGER.info("Verify element on login page.");
+		loginPage.clickOnElementOfLoginPage("signupLink");
+
+		softAssert.assertTrue(loginPage.verifyElementPresentOnLoginPage("signInEmail"),"Sign up email not present on log in page.");	
+		LOGGER.info("Enter user email to log in to application.");		
+		loginPage.enterTextOnElementOnLoginPage(("signInEmail"), objectReader.getProperties("userID"));
+		
+		
+		softAssert.assertTrue(loginPage.verifyElementPresentOnLoginPage("signInPassword"),"Sign up password not present on log in page.");
+		LOGGER.info("Enter user email to log in to application.");
+		loginPage.enterTextOnElementOnLoginPage(("signInPassword"), objectReader.getProperties("password"));
+		
+		loginPage.clickOnElementOfLoginPage("loginButton");
+		softAssert.assertAll();
+		LOGGER.info("Aplication login completed successfully.");
+	}
 }

@@ -5,18 +5,21 @@ import org.testng.asserts.SoftAssert;
 import org.testng.log4testng.Logger;
 
 import com.webshop.basetest.SetTestEnvironment;
+import com.webshop.commonaction.CommonMethod;
 import com.webshop.constant.PageConstant;
 import com.webshop.pages.PurchaseOrderPage;
 
 public class PurchaseOrderPageTest extends SetTestEnvironment{
 
-	@Test(priority=1, dependsOnGroups = {"LoginPageTest.verifyApplicationLoginTest"})
+	@Test(priority=1)
 	public void verifyShoppingCart(){
 
 		PurchaseOrderPage purchaseOrderPage = new PurchaseOrderPage(driver);		
 		Logger LOGGER = Logger.getLogger(PurchaseOrderPageTest.class);
 		SoftAssert softAssert = new SoftAssert();
-		
+
+		CommonMethod commonMethod = new CommonMethod(driver);
+		commonMethod.login();
 		LOGGER.info("Test - Verify Shopping cart.");
 
 		softAssert.assertTrue(purchaseOrderPage.verifyElementPresentOnPurchaseOrderPage("shoppingCart"),"Shopping cart link not present on page.");
@@ -29,12 +32,15 @@ public class PurchaseOrderPageTest extends SetTestEnvironment{
 		LOGGER.info("Shopping cart verification test completed successfully.");
 	}
 	
-	@Test(priority=2, dependsOnGroups = {"LoginPageTest.verifyApplicationLoginTest"})
+	@Test(priority=2)
 	public void verifyPurchaseOrder(){
 
 		PurchaseOrderPage purchaseOrderPage = new PurchaseOrderPage(driver);
 		Logger LOGGER = Logger.getLogger(PurchaseOrderPageTest.class);
 		SoftAssert softAssert = new SoftAssert();
+
+		CommonMethod commonMethod = new CommonMethod(driver);
+		commonMethod.login();
 		LOGGER.info("Test - Verify Shopping cart.");
 
 		softAssert.assertTrue(purchaseOrderPage.verifyElementPresentOnPurchaseOrderPage("bookTopMenu"),"Book section not available on page.");
@@ -45,7 +51,7 @@ public class PurchaseOrderPageTest extends SetTestEnvironment{
 		purchaseOrderPage.clickOnElementOnPurchaseOrderPage("addToCart");
 
 		LOGGER.info("Select book to buy.");
-		softAssert.assertTrue(purchaseOrderPage.verifyElementPresentOnPurchaseOrderPage("successMassageOnAddToCart"),"Success message are not available after adding the books into the cart.");
+//		softAssert.assertTrue(purchaseOrderPage.verifyElementPresentOnPurchaseOrderPage("successMassageOnAddToCart"),"Success message are not available after adding the books into the cart.");
 		softAssert.assertTrue(purchaseOrderPage.getTextOnElementOnPurchaseOrderPage("successMassageOnAddToCart").equals(PageConstant.ORDER_SUCCESS_MESSAGE),"Addition of books into the cart sucessfully completed.");
 	
 		softAssert.assertAll();

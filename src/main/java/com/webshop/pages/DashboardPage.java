@@ -20,7 +20,7 @@ public class DashboardPage extends CommonMethod{
 	
 	public DashboardPage(WebDriver driver) {
 		// TODO Auto-generated constructor stub
-		
+
 		super(driver);
 		dashboardPropertiesReader = new ObjectReader(PageConstant.DAHBOARD_PROPERTIES_FILE_PATH);
 	}
