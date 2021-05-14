@@ -1,8 +1,9 @@
 package com.webshop.testscripts;
 
 import org.testng.annotations.Test;
+import com.webshop.util.*;
 import org.testng.asserts.SoftAssert;
-import org.testng.log4testng.Logger;
+import java.util.logging.Logger;
 
 import com.webshop.basetest.SetTestEnvironment;
 import com.webshop.commonaction.CommonMethod;
@@ -11,11 +12,11 @@ import com.webshop.pages.CheckoutOrderPage;
 
 public class CheckoutOrderPageTest extends SetTestEnvironment{
 
-	@Test(priority=1)
+	@Test(priority=1, retryAnalyzer = RetryListener.class)
 	public void verifyShoppingCart(){
 
 		CheckoutOrderPage checkoutOrderPage = new CheckoutOrderPage(driver);
-		Logger LOGGER = Logger.getLogger(PurchaseOrderPageTest.class);
+		Logger LOGGER = Logger.getLogger(PurchaseOrderPageTest.class.getName());
 		SoftAssert softAssert = new SoftAssert();
 
 		CommonMethod commonMethod = new CommonMethod(driver);
@@ -31,11 +32,11 @@ public class CheckoutOrderPageTest extends SetTestEnvironment{
 		LOGGER.info("Shopping cart verification test completed successfully.");
 	}
 	
-	@Test(priority=2)
+	@Test(priority=2, retryAnalyzer = RetryListener.class)
 	public void verifyAddAddressDetails(){
 
 		CheckoutOrderPage checkoutOrderPage = new CheckoutOrderPage(driver);
-		Logger LOGGER = Logger.getLogger(PurchaseOrderPageTest.class);
+		Logger LOGGER = Logger.getLogger(PurchaseOrderPageTest.class.getName());
 		SoftAssert softAssert = new SoftAssert();
 
 		CommonMethod commonMethod = new CommonMethod(driver);
@@ -66,11 +67,11 @@ public class CheckoutOrderPageTest extends SetTestEnvironment{
 		LOGGER.info("Book purchase test completed successfully.");		
 	}
 	
-	@Test(priority=3)
+	@Test(priority=3, retryAnalyzer = RetryListener.class)
 	public void verifycheckoutOrderPageTest(){
 
 		CheckoutOrderPage checkoutOrderPage = new CheckoutOrderPage(driver);
-		Logger LOGGER = Logger.getLogger(PurchaseOrderPageTest.class);
+		Logger LOGGER = Logger.getLogger(PurchaseOrderPageTest.class.getName());
 		SoftAssert softAssert = new SoftAssert();
 		LOGGER.info("Test - Verify Order checkout test case.");
 

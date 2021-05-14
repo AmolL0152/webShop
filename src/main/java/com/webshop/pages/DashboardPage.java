@@ -1,7 +1,7 @@
 package com.webshop.pages;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.log4testng.Logger;
+import java.util.logging.Logger;
 
 import com.webshop.commonaction.CommonMethod;
 import com.webshop.constant.PageConstant;
@@ -9,7 +9,7 @@ import com.webshop.util.ObjectReader;
 
 public class DashboardPage extends CommonMethod{
 
-	Logger LOGGER = Logger.getLogger(DashboardPage.class);
+	Logger LOGGER = Logger.getLogger(DashboardPage.class.getName());
 	private ObjectReader dashboardPropertiesReader;
 	PageConstant pageConstant = new PageConstant();
 	

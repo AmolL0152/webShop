@@ -2,20 +2,21 @@ package com.webshop.testscripts;
 
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import org.testng.log4testng.Logger;
+import java.util.logging.Logger;
 
 import com.webshop.basetest.SetTestEnvironment;
 import com.webshop.commonaction.CommonMethod;
 import com.webshop.constant.PageConstant;
 import com.webshop.pages.PurchaseOrderPage;
+import com.webshop.util.RetryListener;
 
 public class PurchaseOrderPageTest extends SetTestEnvironment{
 
-	@Test(priority=1)
+	@Test(priority=1, retryAnalyzer = RetryListener.class)
 	public void verifyShoppingCart(){
 
 		PurchaseOrderPage purchaseOrderPage = new PurchaseOrderPage(driver);		
-		Logger LOGGER = Logger.getLogger(PurchaseOrderPageTest.class);
+		Logger LOGGER = Logger.getLogger(PurchaseOrderPageTest.class.getName());
 		SoftAssert softAssert = new SoftAssert();
 
 		CommonMethod commonMethod = new CommonMethod(driver);
@@ -32,11 +33,11 @@ public class PurchaseOrderPageTest extends SetTestEnvironment{
 		LOGGER.info("Shopping cart verification test completed successfully.");
 	}
 	
-	@Test(priority=2)
+	@Test(priority=2, retryAnalyzer = RetryListener.class)
 	public void verifyPurchaseOrder(){
 
 		PurchaseOrderPage purchaseOrderPage = new PurchaseOrderPage(driver);
-		Logger LOGGER = Logger.getLogger(PurchaseOrderPageTest.class);
+		Logger LOGGER = Logger.getLogger(PurchaseOrderPageTest.class.getName());
 		SoftAssert softAssert = new SoftAssert();
 
 		CommonMethod commonMethod = new CommonMethod(driver);

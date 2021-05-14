@@ -2,20 +2,19 @@ package com.webshop.testscripts;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.log4testng.Logger;
+import java.util.logging.Logger;
 
 import com.webshop.basetest.SetTestEnvironment;
 import com.webshop.constant.PageConstant;
 import com.webshop.pages.DashboardPage;
+import com.webshop.util.RetryListener;
 
 public class DashboardPageTest extends SetTestEnvironment{
 	
 	
-	private static Logger LOGGER = Logger.getLogger(DashboardPageTest.class);
-	
-	@Test(priority=1)
+	@Test(priority=1, retryAnalyzer = RetryListener.class)
 	public void launchApplicationTest(){
-
+	Logger LOGGER = Logger.getLogger(DashboardPageTest.class.getName());
 	LOGGER.info("launch application test");
 	DashboardPage dashboardPage = new DashboardPage(driver);
 	Assert.assertTrue((dashboardPage.getApplicationURL()).equals(PageConstant.APPLICATION_URL_DATA));
@@ -24,9 +23,9 @@ public class DashboardPageTest extends SetTestEnvironment{
 	
 	}
 	
-	@Test(priority=2)
+	@Test(priority=2, retryAnalyzer = RetryListener.class)
 	public void validateApplicationDashboardTitleTest(){
-
+	Logger LOGGER = Logger.getLogger(DashboardPageTest.class.getName());
 	LOGGER.info("Application dashboard title test.");
 	DashboardPage dashboardPage = new DashboardPage(driver);
 	Assert.assertTrue((dashboardPage.getApplicationDashboardTitle()).equals(PageConstant.DASHBOARD_TITLE));
@@ -34,9 +33,9 @@ public class DashboardPageTest extends SetTestEnvironment{
 	
 	}
 	
-	@Test(priority=3)
+	@Test(priority=3, retryAnalyzer = RetryListener.class)
 	public void validateApplicationDashboardLogoTest(){
-
+	Logger LOGGER = Logger.getLogger(DashboardPageTest.class.getName());
 	LOGGER.info("Application dashboard logo test.");
 	DashboardPage dashboardPage = new DashboardPage(driver);
 	Assert.assertTrue(dashboardPage.verifyElementPresentOnDashboardPage("dashboardLogo"));

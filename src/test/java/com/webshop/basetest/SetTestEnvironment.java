@@ -4,15 +4,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.log4testng.Logger;
-
+import java.util.logging.Logger;
 import com.webshop.constant.PageConstant;
-import com.webshop.testscripts.DashboardPageTest;
 import com.webshop.util.ObjectReader;
 
 public class SetTestEnvironment {
 	ObjectReader objectReader;
-	Logger LOGGER = Logger.getLogger(DashboardPageTest.class);
+	private final static Logger LOGGER = Logger.getLogger(SetTestEnvironment.class.getName());
 	
 	public SetTestEnvironment() {
 		// TODO Auto-generated constructor stub
@@ -47,11 +45,4 @@ public class SetTestEnvironment {
 		driver.close();
 		driver.quit();
 	}
-
-	/* Method used to retriev driver
-	 * @author - Amol
-	 */
-	public WebDriver getDriver() {
-        return driver;
-    }
 }

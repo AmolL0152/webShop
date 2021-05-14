@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.asserts.SoftAssert;
-import org.testng.log4testng.Logger;
+import java.util.logging.Logger;
 
 import com.webshop.constant.PageConstant;
 import com.webshop.pages.LoginPage;
@@ -84,13 +84,12 @@ public class CommonMethod {
 	 * 
 	 */
 	public void enterTextOnElement(String key, String text){
-	
+
 		WebElement element =wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(key)));
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", element);
 		element.sendKeys(text);		
 	}
-	
 
 	/* Methos used to click on element is present on page
 	 * @param - key to retrieve element from properties file
@@ -98,20 +97,20 @@ public class CommonMethod {
 	 * 
 	 */
 	public void clickOnElement(String key){
-		
+
 		WebElement element =wait.until(ExpectedConditions.elementToBeClickable(By.xpath(key)));
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", element);
 		element.click();		
 	}
-	
+
 	/* Methos used to get text of element is present on page
 	 * @param - key to retrieve element from properties file
 	 * @author - Amol
 	 * 
 	 */
 	public String getTextOnElement(String key){
-		
+
 		WebElement element =wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(key)));
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", element);
@@ -121,7 +120,7 @@ public class CommonMethod {
 	public void login(){
 		LoginPage loginPage = new LoginPage(driver);
 		ObjectReader objectReader = new ObjectReader(PageConstant.CONFIG_PROPERTIES_FILE_PATH);
-		Logger LOGGER = Logger.getLogger(LoginPageTest.class);
+		Logger LOGGER = Logger.getLogger(LoginPageTest.class.getName());
 		SoftAssert softAssert = new SoftAssert();
 		LOGGER.info("Test - Application login.");
 
@@ -142,4 +141,11 @@ public class CommonMethod {
 		softAssert.assertAll();
 		LOGGER.info("Aplication login completed successfully.");
 	}
+
+	/* Method used to retriev driver
+	 * @author - Amol
+	 */
+	public WebDriver getDriver() {
+        return driver;
+    }
 }

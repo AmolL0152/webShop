@@ -2,7 +2,7 @@ package com.webshop.testscripts;
 
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import org.testng.log4testng.Logger;
+import java.util.logging.Logger;
 
 import com.webshop.basetest.SetTestEnvironment;
 import com.webshop.commonaction.CommonMethod;
@@ -10,17 +10,19 @@ import com.webshop.constant.PageConstant;
 import com.webshop.pages.DashboardPage;
 import com.webshop.pages.LoginPage;
 import com.webshop.util.ObjectReader;
+import com.webshop.util.RetryListener;
 
 public class LoginPageTest extends SetTestEnvironment{
 
-	@Test(priority=1, groups={"LoginPageTest.verifyApplicationLoginTest"})
+	@Test(priority=1, retryAnalyzer = RetryListener.class)
 	public void verifyApplicationLoginTest() {
 
 		LoginPage loginPage = new LoginPage(driver);
 		ObjectReader objectReader = new ObjectReader(PageConstant.CONFIG_PROPERTIES_FILE_PATH);
-		Logger LOGGER = Logger.getLogger(LoginPageTest.class);
+		Logger LOGGER = Logger.getLogger(LoginPageTest.class.getName());
 		SoftAssert softAssert = new SoftAssert();
 		LOGGER.info("Test - Application login.");
+//		ExtentTestManager.getTest().log(Status.INFO, "Hellooo started base test1");
 
 		softAssert.assertTrue(loginPage.verifyElementPresentOnLoginPage("signupLink"),"Sign up link not present on log in page.");
 		LOGGER.info("Verify element on login page.");
@@ -40,10 +42,10 @@ public class LoginPageTest extends SetTestEnvironment{
 		LOGGER.info("Aplication login test completed successfully.");
 	}
 	
-	@Test(priority=2)
+	@Test(priority=2, retryAnalyzer = RetryListener.class)
 	public void verifyLoggedInUserTest(){
 
-		Logger LOGGER = Logger.getLogger(LoginPageTest.class);
+		Logger LOGGER = Logger.getLogger(LoginPageTest.class.getName());
 		SoftAssert softAssert = new SoftAssert();
 		ObjectReader objectReader = new ObjectReader(PageConstant.CONFIG_PROPERTIES_FILE_PATH);
 		DashboardPage dashboardPage = new DashboardPage(driver);

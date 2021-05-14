@@ -2,6 +2,8 @@ package com.webshop.constant;
 
 public class PageConstant {
 
+	public static final String REPORT_PATH = "../webShop/Reports";
+	public static final String SCREENSHOOT_FOLDER_PATH = "../webShop/Reports/ErrorScreenshot";
 	public static String CHROME_BROWSER = "webdriver.chrome.driver";
 	public static String CHROME_BROWSER_PATH = "chromeBrowserPath";
 	public static String APPLICATION_URL = "appUrl";
