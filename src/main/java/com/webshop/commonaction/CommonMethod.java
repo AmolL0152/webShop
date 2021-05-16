@@ -5,8 +5,11 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.asserts.SoftAssert;
+
+import java.util.List;
 import java.util.logging.Logger;
 
 import com.webshop.constant.PageConstant;
@@ -104,10 +107,10 @@ public class CommonMethod {
 		element.click();		
 	}
 
-	/* Methos used to get text of element is present on page
+	/* Method used to get text of element is present on page
 	 * @param - key to retrieve element from properties file
 	 * @author - Amol
-	 * 
+	 *
 	 */
 	public String getTextOnElement(String key){
 
@@ -115,6 +118,45 @@ public class CommonMethod {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", element);
 		return element.getText();
+	}
+
+	/* Method used to get text of element is present on page
+	 * @param - key to retrieve element from properties file
+	 * @author - Amol
+	 *
+	 */
+	public List<WebElement> getAllElementFromDropdown(String key){
+
+		WebElement element =wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(key)));
+		Select dropdownSelect = new Select(element);
+		List<WebElement> dropdownList = dropdownSelect.getOptions();
+		return dropdownList;
+	}
+
+	/* Method used to get list of element is present on page and select value
+	 * @param - key to retrieve element from properties file
+	 * @author - Amol
+	 *
+	 */
+
+	public void  selectDropdownvalue(String key, String value){
+
+		WebElement element =wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(key)));
+		Select dropdownSelect = new Select(element);
+		dropdownSelect.selectByVisibleText(value);
+	}
+
+	/* Method used to get list of element is present on page and select value
+	 * @param - key to retrieve element from properties file
+	 * @author - Amol
+	 *
+	 */
+
+	public void  selectDropdownvalue(String key, int index){
+
+		WebElement element =wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(key)));
+		Select dropdownSelect = new Select(element);
+		dropdownSelect.selectByIndex(index);
 	}
 
 	public void login(){

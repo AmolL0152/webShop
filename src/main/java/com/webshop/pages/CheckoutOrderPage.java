@@ -1,6 +1,9 @@
 package com.webshop.pages;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 import java.util.logging.Logger;
 
 import com.webshop.commonaction.CommonMethod;
@@ -75,5 +78,31 @@ public class CheckoutOrderPage extends CommonMethod{
 		
 		return getTextOnElement(checkoutOrderPropertiesReader.getProperties(key));
 	}
+	/* Method used to get list of element is present on dropdown on page
+	 * @param - key to retrieve list element from properties file
+	 * @author - Amol
+	 *
+	 */
+	public List<WebElement> getAllElementFromDropdownOnCheckoutOrderPage(String key){
 
+		return getAllElementFromDropdown(key);
+	}
+
+	/* Method used to get list of element is present on page and select value
+	 * @param - key to retrieve element from properties file
+	 * @author - Amol
+	 *
+	 */
+	public void selectDropdownvalueOnCheckoutOrderPage(String key, String value){
+		selectDropdownvalue(key, value);
+	}
+
+	/* Method used to get list of element is present on page and select value
+	 * @param - key to retrieve element from properties file
+	 * @author - Amol
+	 *
+	 */
+	public void selectDropdownvalueOnCheckoutOrderPage(String key, int index){
+		selectDropdownvalue(key, index);
+	}
 }

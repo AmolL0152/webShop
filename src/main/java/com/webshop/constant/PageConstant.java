@@ -16,7 +16,7 @@ public class PageConstant {
 	public static String PURCHASE_ORDER_PROPERTIES_FILE_PATH = "../webShop/properties/PurchaeOrderPage.properties";
 	public static String CHECKOUT_ORDER_PROPERTIES_FILE_PATH = "../webShop/properties/CheckoutOrderPage.properties";
 	public static String CONFIG_PROPERTIES_FILE_PATH = "../webShop/properties/config.properties";
-	public static String ORDER_SUCCESS_MESSAGE= "The product has been added to your shopping cart";
-	public static String SHOPPING_CART_EMPTY_MESSAGE= "The product has been added to your shopping cart";
+	public static String ORDER_SUCCESS_MESSAGE= "Your order has been successfully processed!";
+	public static String SHOPPING_CART_EMPTY_MESSAGE= "Your Shopping Cart is empty!";
 	
 }

@@ -1,6 +1,8 @@
 package com.webshop.pages;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import java.util.List;
 import java.util.logging.Logger;
 
 import com.webshop.commonaction.CommonMethod;
@@ -15,12 +17,11 @@ public class PurchaseOrderPage extends CommonMethod{
 	
 	/* Constructor method used to initalise the web driver and wait method.
 	 * @author - Amol
-	 * 
+	 *
 	 */
-	
 	public PurchaseOrderPage(WebDriver driver) {
 		// TODO Auto-generated constructor stub
-		
+
 		super(driver);
 		purchaseOrderPropertiesReader = new ObjectReader(PageConstant.PURCHASE_ORDER_PROPERTIES_FILE_PATH);
 	}
@@ -28,7 +29,7 @@ public class PurchaseOrderPage extends CommonMethod{
 	/* Methos used to verify element is present on page
 	 * @param - key to retrieve element from properties file
 	 * @author - Amol
-	 * 
+	 *
 	 */
 	public boolean verifyElementPresentOnPurchaseOrderPage(String key) {
 		// TODO Auto-generated method stub
@@ -67,14 +68,33 @@ public class PurchaseOrderPage extends CommonMethod{
 		clickOnElement(purchaseOrderPropertiesReader.getProperties(key));		
 	}
 	
-	/* Methos used to get text of element is present on page
+	/* Method used to get text of element is present on page
 	 * @param - key to retrieve element from properties file
 	 * @author - Amol
-	 * 
+	 *
 	 */
 	public String getTextOnElementOnPurchaseOrderPage(String key){
-		
+
 		return getTextOnElement(purchaseOrderPropertiesReader.getProperties(key));
+	}
+
+	/* Method used to get list of element is present on dropdown on page
+	 * @param - key to retrieve list element from properties file
+	 * @author - Amol
+	 *
+	 */
+	public List<WebElement> getAllElementFromDropdownOnPurchaseOrderPage(String key){
+
+		return getAllElementFromDropdown(key);
+	}
+
+	/* Method used to get list of element is present on page and select value
+	 * @param - key to retrieve element from properties file
+	 * @author - Amol
+	 *
+	 */
+	public void selectDropdownvalueOnPurchaseOrderPage(String key, String value){
+		selectDropdownvalue(key, value);
 	}
 
 }
