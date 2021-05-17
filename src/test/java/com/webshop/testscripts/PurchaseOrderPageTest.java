@@ -1,5 +1,6 @@
 package com.webshop.testscripts;
 
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -8,9 +9,9 @@ import com.webshop.basetest.SetTestEnvironment;
 import com.webshop.commonaction.CommonMethod;
 import com.webshop.constant.PageConstant;
 import com.webshop.pages.PurchaseOrderPage;
-import com.webshop.util.EXtentReport;
 import com.webshop.util.RetryListener;
 
+@Listeners(com.webshop.util.TestListener.class)
 public class PurchaseOrderPageTest extends SetTestEnvironment{
 
 	@Test(priority=1, retryAnalyzer = RetryListener.class)
@@ -18,7 +19,6 @@ public class PurchaseOrderPageTest extends SetTestEnvironment{
 
 		PurchaseOrderPage purchaseOrderPage = new PurchaseOrderPage(driver);		
 		Logger LOGGER = Logger.getLogger(PurchaseOrderPageTest.class.getName());
-		EXtentReport.startTest(Thread.currentThread().getStackTrace()[1].getMethodName());
 		SoftAssert softAssert = new SoftAssert();
 
 		CommonMethod commonMethod = new CommonMethod(driver);
@@ -42,7 +42,6 @@ public class PurchaseOrderPageTest extends SetTestEnvironment{
 
 		PurchaseOrderPage purchaseOrderPage = new PurchaseOrderPage(driver);
 		Logger LOGGER = Logger.getLogger(PurchaseOrderPageTest.class.getName());
-		EXtentReport.startTest(Thread.currentThread().getStackTrace()[1].getMethodName());
 		SoftAssert softAssert = new SoftAssert();
 
 		CommonMethod commonMethod = new CommonMethod(driver);

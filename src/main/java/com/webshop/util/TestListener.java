@@ -7,7 +7,6 @@ import java.util.logging.Logger;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.io.FileHandler;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
@@ -15,12 +14,10 @@ import org.testng.ITestResult;
 
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
-import com.webshop.commonaction.CommonMethod;
+import com.webshop.basetest.SetTestEnvironment;
 
-public class TestListener implements ITestListener{
+public class TestListener extends SetTestEnvironment implements ITestListener{
 
-	private WebDriver driver;
-	CommonMethod commonMethod = new CommonMethod(driver);
 	public void onTestStart(ITestResult result) {
 		// TODO Auto-generated method stub
 
@@ -43,7 +40,6 @@ public class TestListener implements ITestListener{
 		LOGGER.info((result.getMethod().getMethodName() + " failed!"));
 
 		//		ITestContext context = result.getTestContext();
-		WebDriver driver = commonMethod.getDriver();
 
 		String targetLocation = null;
 

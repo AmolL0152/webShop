@@ -3,13 +3,9 @@ package com.webshop.basetest;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-
 import java.util.logging.Logger;
 import com.webshop.constant.PageConstant;
-import com.webshop.util.EXtentReport;
 import com.webshop.util.ObjectReader;
 
 public class SetTestEnvironment {
@@ -20,11 +16,6 @@ public class SetTestEnvironment {
 		// TODO Auto-generated constructor stub
 	}
 	protected WebDriver driver;
-
-	@BeforeSuite
-	public void beforeSuite(){
-		EXtentReport.reportSetUp();
-	}
 
 	/* BeforeMethos used to set configuration on browser
 	 * always run - true
@@ -54,12 +45,6 @@ public class SetTestEnvironment {
 		LOGGER.info("Application - closing the application.");
 		//		EXtentReport.reportCloseUp();
 		driver.close();
-		EXtentReport.reportCloseUp();
 		driver.quit();
-	}
-
-	@AfterSuite
-	public void afterSuite(){
-
 	}
 }

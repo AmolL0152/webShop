@@ -1,6 +1,7 @@
 package com.webshop.testscripts;
 
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import com.webshop.util.*;
 import org.testng.asserts.SoftAssert;
@@ -11,6 +12,7 @@ import com.webshop.commonaction.CommonMethod;
 import com.webshop.constant.PageConstant;
 import com.webshop.pages.CheckoutOrderPage;
 
+@Listeners(com.webshop.util.TestListener.class)
 public class CheckoutOrderPageTest extends SetTestEnvironment{
 
 	@Test(priority=1, retryAnalyzer = RetryListener.class)
@@ -18,7 +20,6 @@ public class CheckoutOrderPageTest extends SetTestEnvironment{
 
 		CheckoutOrderPage checkoutOrderPage = new CheckoutOrderPage(driver);
 		Logger LOGGER = Logger.getLogger(PurchaseOrderPageTest.class.getName());
-		EXtentReport.startTest(Thread.currentThread().getStackTrace()[1].getMethodName());
 		SoftAssert softAssert = new SoftAssert();
 
 		CommonMethod commonMethod = new CommonMethod(driver);
@@ -42,9 +43,8 @@ public class CheckoutOrderPageTest extends SetTestEnvironment{
 
 		CheckoutOrderPage checkoutOrderPage = new CheckoutOrderPage(driver);
 		Logger LOGGER = Logger.getLogger(PurchaseOrderPageTest.class.getName());
-		EXtentReport.startTest(Thread.currentThread().getStackTrace()[1].getMethodName());
-		SoftAssert softAssert = new SoftAssert();
 
+		SoftAssert softAssert = new SoftAssert();
 		CommonMethod commonMethod = new CommonMethod(driver);
 		commonMethod.login();
 		LOGGER.info("Test - Verify Add address details to proceed  order checkout.");
@@ -81,9 +81,8 @@ public class CheckoutOrderPageTest extends SetTestEnvironment{
 
 		CheckoutOrderPage checkoutOrderPage = new CheckoutOrderPage(driver);
 		Logger LOGGER = Logger.getLogger(PurchaseOrderPageTest.class.getName());
-		EXtentReport.startTest(Thread.currentThread().getStackTrace()[1].getMethodName());
-		SoftAssert softAssert = new SoftAssert();
 
+		SoftAssert softAssert = new SoftAssert();
 		LOGGER.info("Test - Verify Order checkout test case.");
 
 		CommonMethod commonMethod = new CommonMethod(driver);
@@ -153,7 +152,4 @@ public class CheckoutOrderPageTest extends SetTestEnvironment{
 		softAssert.assertAll();
 		LOGGER.info("Order checkout test case completed successfully.");		
 	}
-
 }
-
-

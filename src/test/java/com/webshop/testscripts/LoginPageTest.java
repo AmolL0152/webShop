@@ -1,5 +1,6 @@
 package com.webshop.testscripts;
 
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import java.util.logging.Logger;
@@ -9,10 +10,10 @@ import com.webshop.commonaction.CommonMethod;
 import com.webshop.constant.PageConstant;
 import com.webshop.pages.DashboardPage;
 import com.webshop.pages.LoginPage;
-import com.webshop.util.EXtentReport;
 import com.webshop.util.ObjectReader;
 import com.webshop.util.RetryListener;
 
+@Listeners(com.webshop.util.TestListener.class)
 public class LoginPageTest extends SetTestEnvironment{
 
 	@Test(priority=1, retryAnalyzer = RetryListener.class)
@@ -22,7 +23,7 @@ public class LoginPageTest extends SetTestEnvironment{
 
 		ObjectReader objectReader = new ObjectReader(PageConstant.CONFIG_PROPERTIES_FILE_PATH);
 		Logger LOGGER = Logger.getLogger(LoginPageTest.class.getName());
-		EXtentReport.startTest(Thread.currentThread().getStackTrace()[1].getMethodName());
+
 		SoftAssert softAssert = new SoftAssert();
 		LOGGER.info("Test - Application login.");
 
@@ -49,7 +50,7 @@ public class LoginPageTest extends SetTestEnvironment{
 
 		Logger LOGGER = Logger.getLogger(LoginPageTest.class.getName());
 		SoftAssert softAssert = new SoftAssert();
-		EXtentReport.startTest(Thread.currentThread().getStackTrace()[1].getMethodName());
+
 		ObjectReader objectReader = new ObjectReader(PageConstant.CONFIG_PROPERTIES_FILE_PATH);
 		DashboardPage dashboardPage = new DashboardPage(driver);
 		LOGGER.info("Test - Validate logged in user test.");
