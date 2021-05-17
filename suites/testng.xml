@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
-  <test name="webShopTest">
-    <classes>
-      <class name="com.webshop.testscripts.LoginPageTest"/>
-      <class name="com.webshop.testscripts.DashboardPageTest"/>
-      <class name="com.webshop.testscripts.PurchaseOrderPageTest"/>
-      <class name="com.webshop.testscripts.CheckoutOrderPageTest"/>
-    </classes>
-  </test> <!-- Test -->
+	<test name="webShopTest">
+		<classes>
+			<class name="com.webshop.testscripts.DashboardPageTest" />
+			<class name="com.webshop.testscripts.LoginPageTest" />
+			<class name="com.webshop.testscripts.PurchaseOrderPageTest" />
+			<class name="com.webshop.testscripts.CheckoutOrderPageTest" />
+		</classes>
+	</test> <!-- Test -->
 </suite> <!-- Suite -->

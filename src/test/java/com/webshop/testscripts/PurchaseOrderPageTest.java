@@ -8,6 +8,7 @@ import com.webshop.basetest.SetTestEnvironment;
 import com.webshop.commonaction.CommonMethod;
 import com.webshop.constant.PageConstant;
 import com.webshop.pages.PurchaseOrderPage;
+import com.webshop.util.EXtentReport;
 import com.webshop.util.RetryListener;
 
 public class PurchaseOrderPageTest extends SetTestEnvironment{
@@ -17,6 +18,7 @@ public class PurchaseOrderPageTest extends SetTestEnvironment{
 
 		PurchaseOrderPage purchaseOrderPage = new PurchaseOrderPage(driver);		
 		Logger LOGGER = Logger.getLogger(PurchaseOrderPageTest.class.getName());
+		EXtentReport.startTest(Thread.currentThread().getStackTrace()[1].getMethodName());
 		SoftAssert softAssert = new SoftAssert();
 
 		CommonMethod commonMethod = new CommonMethod(driver);
@@ -34,12 +36,13 @@ public class PurchaseOrderPageTest extends SetTestEnvironment{
 		softAssert.assertAll();
 		LOGGER.info("Shopping cart verification test completed successfully.");
 	}
-	
+
 	@Test(priority=2, retryAnalyzer = RetryListener.class)
 	public void verifyPurchaseOrder(){
 
 		PurchaseOrderPage purchaseOrderPage = new PurchaseOrderPage(driver);
 		Logger LOGGER = Logger.getLogger(PurchaseOrderPageTest.class.getName());
+		EXtentReport.startTest(Thread.currentThread().getStackTrace()[1].getMethodName());
 		SoftAssert softAssert = new SoftAssert();
 
 		CommonMethod commonMethod = new CommonMethod(driver);
@@ -52,17 +55,12 @@ public class PurchaseOrderPageTest extends SetTestEnvironment{
 
 		softAssert.assertTrue(purchaseOrderPage.verifyElementPresentOnPurchaseOrderPage("addToCart"),"Add to cart section not available on page.");
 		purchaseOrderPage.clickOnElementOnPurchaseOrderPage("addToCart");
-		
+
 		softAssert.assertTrue(purchaseOrderPage.verifyElementPresentOnPurchaseOrderPage("addToCart"),"Add to cart section not available on page.");
 		purchaseOrderPage.clickOnElementOnPurchaseOrderPage("addToCart");
 
-//		LOGGER.info("Select book to buy.");
-//		softAssert.assertTrue(purchaseOrderPage.verifyElementPresentOnPurchaseOrderPage("successMassageOnAddToCart"),"Success message are not available after adding the books into the cart.");
-//		softAssert.assertTrue(purchaseOrderPage.getTextOnElementOnPurchaseOrderPage("successMassageOnAddToCart").equals(PageConstant.ORDER_SUCCESS_MESSAGE),"Addition of books into the cart sucessfully completed.");
-	
 		softAssert.assertAll();
 		LOGGER.info("Book purchase test completed successfully.");
-		
-	}
 
+	}
 }

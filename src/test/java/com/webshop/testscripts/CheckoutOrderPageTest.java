@@ -18,6 +18,7 @@ public class CheckoutOrderPageTest extends SetTestEnvironment{
 
 		CheckoutOrderPage checkoutOrderPage = new CheckoutOrderPage(driver);
 		Logger LOGGER = Logger.getLogger(PurchaseOrderPageTest.class.getName());
+		EXtentReport.startTest(Thread.currentThread().getStackTrace()[1].getMethodName());
 		SoftAssert softAssert = new SoftAssert();
 
 		CommonMethod commonMethod = new CommonMethod(driver);
@@ -40,9 +41,8 @@ public class CheckoutOrderPageTest extends SetTestEnvironment{
 	public void verifyAddAddressDetails(){
 
 		CheckoutOrderPage checkoutOrderPage = new CheckoutOrderPage(driver);
-
-
 		Logger LOGGER = Logger.getLogger(PurchaseOrderPageTest.class.getName());
+		EXtentReport.startTest(Thread.currentThread().getStackTrace()[1].getMethodName());
 		SoftAssert softAssert = new SoftAssert();
 
 		CommonMethod commonMethod = new CommonMethod(driver);
@@ -81,8 +81,9 @@ public class CheckoutOrderPageTest extends SetTestEnvironment{
 
 		CheckoutOrderPage checkoutOrderPage = new CheckoutOrderPage(driver);
 		Logger LOGGER = Logger.getLogger(PurchaseOrderPageTest.class.getName());
-
+		EXtentReport.startTest(Thread.currentThread().getStackTrace()[1].getMethodName());
 		SoftAssert softAssert = new SoftAssert();
+
 		LOGGER.info("Test - Verify Order checkout test case.");
 
 		CommonMethod commonMethod = new CommonMethod(driver);
